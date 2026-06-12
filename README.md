@@ -1,21 +1,34 @@
-> [!IMPORTANT]
-> This repostiry will stop updating images starting May 1st 2026 due to Cirrus Labs winding down operations after an acquisition.
-
 # Docker Images for [Flutter](https://flutter.dev/)
 
 [![Build Status][build_badge]][build_link]
 
-You can either [use it in CI](https://cirrus-ci.org/examples/#flutter) or run locally via Docker:
+You can either use it in CI or run locally via Docker:
 
 ```bash
-docker run --rm -it -v ${PWD}:/build --workdir /build ghcr.io/cirruslabs/flutter:stable flutter test
+docker run --rm -it -v ${PWD}:/build --workdir /build marccardinal/flutter:stable flutter test
 ```
 
-The example above simply mount current working directory and runs `flutter test`
+The example above mounts the current working directory and runs `flutter test`.
 
-## GitHub Container Registry
+## Available tags
 
-https://github.com/cirruslabs/docker-images-flutter/pkgs/container/flutter
+| Tag | Contents |
+|-----|----------|
+| `stable` | Latest stable Flutter release |
+| `latest` | Same as `stable` |
+| `beta` | Latest beta Flutter release |
+| `<version>` | Specific Flutter version (e.g. `3.44.0`) |
 
-[build_badge]: https://api.cirrus-ci.com/github/cirruslabs/docker-images-flutter.svg
-[build_link]: https://cirrus-ci.com/github/cirruslabs/docker-images-flutter
+## Docker Hub
+
+https://hub.docker.com/r/marccardinal/flutter
+
+## Secrets required
+
+Add these secrets to the GitHub repository settings before the first push:
+
+- `DOCKERHUB_USERNAME` — your Docker Hub username
+- `DOCKERHUB_TOKEN` — a Docker Hub access token (not your password)
+
+[build_badge]: https://github.com/marccardinal/docker-images-flutter/actions/workflows/build.yml/badge.svg
+[build_link]: https://github.com/marccardinal/docker-images-flutter/actions/workflows/build.yml
